@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alternating Lights</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header class="toolbar">
+        <span class="title">LIGHT GRID</span>
+        <button id="settings-toggle" class="settings-button secondary" type="button" aria-expanded="false" aria-controls="controls">
+          設定
+        </button>
+      </header>
+
+      <section id="controls" class="controls" aria-label="ライトの設定" hidden>
+        <div class="control">
+          <label for="rows">行数</label>
+          <input id="rows" type="number" min="1" max="30" value="20" />
+        </div>
+
+        <div class="control">
+          <label for="columns">列数</label>
+          <input id="columns" type="number" min="1" max="30" value="20" />
+        </div>
+
+        <div class="control control-wide">
+          <div class="label-row">
+            <label for="speed">点滅の速さ</label>
+            <output id="speed-value" for="speed">300ms</output>
+          </div>
+          <input id="speed" type="range" min="100" max="2000" step="50" value="300" />
+        </div>
+
+        <div class="control">
+          <label for="group-one-color">グループ1の色</label>
+          <input id="group-one-color" type="color" value="#ff2738" />
+        </div>
+
+        <div class="control">
+          <label for="group-two-color">グループ2の色</label>
+          <input id="group-two-color" type="color" value="#2775ff" />
+        </div>
+
+        <label class="check-control control-wide" for="same-color">
+          <input id="same-color" type="checkbox" />
+          <span>2グループを同じ色にする</span>
+        </label>
+
+        <div class="control">
+          <label for="off-color">消灯色</label>
+          <input id="off-color" type="color" value="#000000" />
+        </div>
+
+        <div class="control">
+          <label for="background-color">背景色</label>
+          <input id="background-color" type="color" value="#08090b" />
+        </div>
+
+        <div class="control">
+          <label for="gap">間隔</label>
+          <input id="gap" type="range" min="2" max="24" value="24" />
+        </div>
+
+        <div class="actions control-wide">
+          <button id="toggle" type="button">一時停止</button>
+          <button id="reset" class="secondary" type="button">初期設定に戻す</button>
+        </div>
+      </section>
+
+      <section class="display">
+        <div id="light-grid" class="light-grid" aria-label="交互に点滅するライト"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,6 +1,8 @@
 :root {
   color-scheme: dark;
   font-family: system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background: #08090b;
   --group-one-color: #ff2738;
   --group-two-color: #2775ff;
@@ -46,9 +48,9 @@ main {
   inset: 0 0 auto 0;
   z-index: 2;
   max-height: 100dvh;
-  overflow-y: auto;
+  overflow: auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
   gap: 16px;
   padding: 22px;
   border-bottom: 1px solid #292b31;
@@ -185,10 +187,4 @@ button.secondary {
 
 .light[data-parity="1"].is-on {
   background: var(--group-two-color);
-}
-
-@media (max-width: 680px) {
-  .controls {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }

@@ -9,9 +9,8 @@
   <body>
     <main>
       <header class="toolbar">
-        <span class="title">LIGHT GRID</span>
-        <button id="settings-toggle" class="settings-button secondary" type="button" aria-expanded="false" aria-controls="controls">
-          設定
+        <button id="settings-toggle" class="settings-button secondary" type="button" aria-label="設定" aria-expanded="false" aria-controls="controls">
+          ⚙
         </button>
       </header>
 
@@ -60,8 +59,13 @@
         </div>
 
         <div class="control">
-          <label for="gap">間隔</label>
-          <input id="gap" type="range" min="2" max="48" value="24" />
+          <label for="gap">中心間の距離</label>
+          <input id="gap" type="range" min="4" max="200" value="24" />
+        </div>
+
+        <div class="control">
+          <label for="light-size">ライトの大きさ</label>
+          <input id="light-size" type="range" min="2" max="100" value="16" />
         </div>
 
         <div class="actions control-wide">

@@ -10,6 +10,7 @@ const inputs = {
   offColor: document.querySelector("#off-color"),
   backgroundColor: document.querySelector("#background-color"),
   gap: document.querySelector("#gap"),
+  lightSize: document.querySelector("#light-size"),
 };
 const speedValue = document.querySelector("#speed-value");
 const controls = document.querySelector("#controls");
@@ -26,7 +27,6 @@ settingsToggle.addEventListener("click", () => {
   const willOpen = controls.hidden;
   controls.hidden = !willOpen;
   settingsToggle.setAttribute("aria-expanded", String(willOpen));
-  settingsToggle.textContent = willOpen ? "閉じる" : "設定";
 });
 
 function createGrid() {
@@ -34,7 +34,8 @@ function createGrid() {
   const columns = Number(inputs.columns.value);
   grid.replaceChildren();
   lights = [];
-  grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${columns}, var(--light-spacing))`;
+  grid.style.gridTemplateRows = `repeat(${rows}, var(--light-spacing))`;
 
   for (let row = 0; row < rows; row += 1) {
     for (let column = 0; column < columns; column += 1) {
@@ -48,6 +49,15 @@ function createGrid() {
   }
 
   updateLights();
+  updateLightSize();
+}
+
+function updateLightSize() {
+  const size = `${inputs.lightSize.value}px`;
+  lights.forEach((light) => {
+    light.style.width = size;
+    light.style.height = size;
+  });
 }
 
 function updateLights() {
@@ -74,7 +84,7 @@ function updateAppearance() {
   root.style.setProperty("--group-two-color", inputs.groupTwoColor.value);
   root.style.setProperty("--off-color", inputs.offColor.value);
   root.style.setProperty("--background-color", inputs.backgroundColor.value);
-  root.style.setProperty("--grid-gap", `${inputs.gap.value}px`);
+  root.style.setProperty("--light-spacing", `${inputs.gap.value}px`);
 }
 
 [inputs.rows, inputs.columns].forEach((input) => {
@@ -89,6 +99,8 @@ inputs.speed.addEventListener("input", () => {
 [inputs.groupOneColor, inputs.groupTwoColor, inputs.offColor, inputs.backgroundColor, inputs.gap].forEach((input) => {
   input.addEventListener("input", updateAppearance);
 });
+
+inputs.lightSize.addEventListener("input", updateLightSize);
 
 inputs.sameColor.addEventListener("change", () => {
   inputs.groupTwoColor.disabled = inputs.sameColor.checked;
@@ -112,6 +124,7 @@ resetButton.addEventListener("click", () => {
   inputs.offColor.value = "#000000";
   inputs.backgroundColor.value = "#08090b";
   inputs.gap.value = 24;
+  inputs.lightSize.value = 16;
   speedValue.value = "300ms";
   activeParity = 0;
   isPlaying = true;

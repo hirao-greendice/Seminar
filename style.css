@@ -6,7 +6,7 @@
   --group-two-color: #2775ff;
   --off-color: #000000;
   --background-color: #08090b;
-  --grid-gap: 24px;
+  --light-spacing: 24px;
 }
 
 * {
@@ -16,44 +16,37 @@
 body {
   min-height: 100vh;
   margin: 0;
-  display: grid;
-  place-items: center;
   background: var(--background-color);
   transition: background-color 200ms ease;
-}
-
-main {
-  width: min(92vw, 920px);
-  margin: 32px 0;
-  border: 1px solid #292b31;
-  border-radius: 18px;
-  background: rgba(13, 14, 17, 0.92);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
   overflow: hidden;
 }
 
-.toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 62px;
-  padding: 12px 18px 12px 22px;
-  border-bottom: 1px solid #292b31;
-  background: #121318;
+main {
+  width: 100vw;
+  height: 100dvh;
 }
 
-.title {
-  color: #a9abb2;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.toolbar {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
 }
 
 .settings-button {
-  min-width: 76px;
+  min-width: 42px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  opacity: 0.72;
 }
 
 .controls {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 2;
+  max-height: 100dvh;
+  overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
@@ -162,20 +155,25 @@ button.secondary {
 }
 
 .display {
-  padding: clamp(18px, 4vw, 42px);
+  width: 100%;
+  height: 100%;
+  padding: clamp(8px, 2vmin, 20px);
+  display: grid;
+  place-items: safe center;
   overflow: auto;
 }
 
 .light-grid {
   display: grid;
-  gap: var(--grid-gap);
-  min-width: 280px;
-  margin: auto;
+  width: max-content;
+  height: max-content;
 }
 
 .light {
-  width: 100%;
+  width: 16px;
+  height: 16px;
   aspect-ratio: 1;
+  place-self: center;
   border-radius: 50%;
   background: var(--off-color);
   border: 0;

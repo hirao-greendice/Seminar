@@ -4,11 +4,11 @@
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #08090b;
-  --group-one-color: #ff2738;
+  --group-one-color: #ffffff;
   --group-two-color: #2775ff;
   --off-color: #000000;
   --background-color: #08090b;
-  --light-spacing: 24px;
+  --light-spacing: 32px;
 }
 
 * {
@@ -172,8 +172,8 @@ button.secondary {
 }
 
 .light {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   aspect-ratio: 1;
   place-self: center;
   border-radius: 50%;
